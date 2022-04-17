@@ -6,7 +6,7 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 let config = require("./config.json");
 
 // PREFIX
-const prefix ="EMMI.CMD.";
+const prefix ="EMMI.";
 
 //LIST OF SPOTTED GENSHIN IMPACT PLAYERS
 let genshinplayers = []
