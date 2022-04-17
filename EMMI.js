@@ -1,19 +1,25 @@
 const { Client, Intents, Message, MessageEmbed, User, MessageAttachment, Guild } = require('discord.js');
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
+
+// TOKEN STORED IN ANOTHER FILE
 let config = require("./config.json");
 
-const prefix ="+";
+// PREFIX
+const prefix ="EMMI.CMD.";
+
+//LIST OF SPOTTED GENSHIN IMPACT PLAYERS
+let genshinplayers = []
 
 
-
+// STATUS AND ACTIVATION CONFIRMATION
 client.once('ready', (message) =>{
     client.user.setPresence({ activities: [{name: 'for genshin players', type:"WATCHING" }], status: 'online' });
-    console.log("E.M.M.I. is online");
+    console.log("*** E.M.M.I. is online ***");
 });
 
 
-
+// CHECK THAT GOES OFF EVERY NEW MESSAGE
 client.on("messageCreate", message =>{
 
     
@@ -23,12 +29,24 @@ client.on("messageCreate", message =>{
 
     const args = message.content.slice(prefix.length).split(" ");
     switch (args[0]){
-        case"loserlist":
-        message.channel.send("People who i have caught playing genshin impact:")
+        case"STATUS":
+
+        // CHECKS IF THE GENSHIN PLAYERS ARRAY IS EMPTY OR NOT
+        if (genshinplayers.length == 0) {
+            message.channel.send("Nobody has recently played genshin impact")
+        } else {
+            message.channel.send("People who has recently played genshin impact:")
+            genshinplayers.forEach(e => {
+                message.channel.send(genshinplayers[e])
+                console.log(e);
+                console.log(genshinplayers)
+            })  
+
+        }
         break;
 
         default:
-            message.channel.send("this is not a valid command, to see all commands type +help");
+            message.channel.send("command not recognized");
 
         break;
 
