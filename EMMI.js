@@ -29,13 +29,14 @@ client.on("messageCreate", message =>{
 
     const args = message.content.slice(prefix.length).split(" ");
     switch (args[0]){
+        // STATUS SENDS A LIST WITH GENSHIN PLAYERS WITHIN THE SESSION
         case"STATUS":
 
         // CHECKS IF THE GENSHIN PLAYERS ARRAY IS EMPTY OR NOT
         if (genshinplayers.length == 0) {
-            message.channel.send("Nobody has recently played genshin impact")
+            message.channel.send("Nobody has recently been playing genshin impact")
         } else {
-            message.channel.send("People who has recently played genshin impact:")
+            message.channel.send("People who have recently been playing genshin impact:")
             genshinplayers.forEach(e => {
                 message.channel.send(genshinplayers[e])
                 console.log(e);
@@ -44,7 +45,7 @@ client.on("messageCreate", message =>{
 
         }
         break;
-
+// DEFAULT
         default:
             message.channel.send("command not recognized");
 
