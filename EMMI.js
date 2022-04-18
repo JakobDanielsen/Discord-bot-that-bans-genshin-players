@@ -85,6 +85,7 @@ client.on('presenceUpdate', (oldMember, newMember) => {
             genshinplayers.push(newMember.user.tag)
             console.log(genshinplayers);
 
+            // THIS IS A CHANNEL SPESIFICALLY FOR MY SERVER, CHANGE THIS WITH YOUR CHANNELS ID 
             client.channels.cache.get('551810687916179467').send(`${newMember.user} IS PLAYING GENSHIN IMPACT`)
         }
     }
