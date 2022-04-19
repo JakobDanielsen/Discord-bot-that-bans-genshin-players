@@ -71,13 +71,13 @@ client.on('presenceUpdate', (oldMember, newMember) => {
     activityLength = newMember.member.presence.activities.length;
 
     //check to see if the user has an activities, and if so, how many
-    if (activityLength >0 ){
+    if (activityLength > 0 ){
         console.log(newMember.user.tag + " has " + activityLength + " activities");
 
         for (let i = 0; i < activityLength; i++) {         
           
         //Debugging messages to the log
-        console.log(newMember.user.tag +"'s Activity in position " + i + " is " + newMember.member.presence.activities[i].name.toLowerCase());
+        console.log(newMember.user.tag +"'s activity in position " + i + " is " + newMember.member.presence.activities[i].name.toLowerCase());
         //console.log("now in lower case " + newMember.member.presence.activities[0].name.toLowerCase());
         //If you want to ban players of any other game than LOL, changer where it says league of legends to any other lowercase name of a game
         if (newMember.member.presence.activities[i].name.toLowerCase() == "genshin impact") { // Started playing.
@@ -86,7 +86,16 @@ client.on('presenceUpdate', (oldMember, newMember) => {
             console.log(genshinplayers);
 
             // THIS IS A CHANNEL SPESIFICALLY FOR MY SERVER, CHANGE THIS WITH YOUR CHANNELS ID 
-            client.channels.cache.get('551810687916179467').send(`${newMember.user} IS PLAYING GENSHIN IMPACT`)
+            try{
+                client.channels.cache.get('551810687916179467').send(`${newMember.user} IS PLAYING GENSHIN IMPACT AND WAS BANNED`)
+            
+                guild.members.ban(`${newMember.user.id}`, {reason: 'PLAYING GENSHIN IMPACT'}).catch((err) => {
+                console.error(err);
+                var x = err.message;});
+                break;
+            }
+            catch(err){    
+            }
         }
     }
     } else {
