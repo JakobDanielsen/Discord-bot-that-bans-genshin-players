@@ -1,4 +1,8 @@
+
+// +++ Code by Jakob Danielsen and M'et +++
+
 const { Client, Intents, Message, MessageEmbed, User, MessageAttachment, Guild } = require('discord.js');
+
 
 const client = new Client({ intents: [
     Intents.FLAGS.GUILDS,
@@ -12,11 +16,31 @@ const client = new Client({ intents: [
 // TOKEN STORED IN ANOTHER FILE
 let config = require("./config.json");
 
+
+// FOR WRITING TO JSON FILE
+const fs = require("fs")
+
+const jsonpath = "./gplayers.json";
+
+if (fs.existsSync(jsonpath)) {
+  // path exists
+  console.log(`${jsonpath} exists!`);
+} else {
+  console.log(`${jsonpath} does not exist`);
+  try {
+    fs.writeFileSync("gplayers.json","{}")
+  } catch (error) {
+      console.log("could not create a file");
+  }
+    
+}
+
 // PREFIX
 const prefix ="EMMI.";
 
 //LIST OF SPOTTED GENSHIN IMPACT PLAYERS
 let genshinplayers = []
+let testArray = []
 
 
 // STATUS AND ACTIVATION CONFIRMATION
@@ -32,7 +56,15 @@ client.on("messageCreate", message =>{
     
     //let mention = message.mentions.user.first();
 
-    if(!message.content.startsWith(prefix) || message.author.bot) return;
+    if(!message.content.startsWith(prefix) || message.author.bot) {
+        return;
+    } else {
+        console.log(`
+
+        ${message.author.tag} sent command: ${message}
+        
+        `);
+    }
 
     const args = message.content.slice(prefix.length).split(" ");
     switch (args[0]){
@@ -51,11 +83,22 @@ client.on("messageCreate", message =>{
             })  
 
         }
-        break;
+            break;
+        case"GITHUB":
+            message.channel.send("https://github.com/JakobDanielsen/Discord-bot-that-bans-genshin-players")
+            break;
+        case"JSONTEST":
+        const sender = message.author.tag
+            testArray.push(sender)
+        let savedJSON = fs.readFileSync("gplayers.json")
+        let savedJSONParsed = JSON.parse(savedJSON)
+        console.log(savedJSONParsed);
+            break;
 // DEFAULT
         default:
             message.channel.send("command not recognized");
-        break;
+
+            break;
     };
 });
 
@@ -73,11 +116,11 @@ client.on('presenceUpdate', (oldMember, newMember) => {
 
         for (let i = 0; i < activityLength; i++) {         
           
-        //Debugging messages to the log
+        //Debugging messages to the console
         console.log(newMember.user.tag +"'s activity in position " + i + " is " + newMember.member.presence.activities[i].name.toLowerCase());
         //console.log("now in lower case " + newMember.member.presence.activities[0].name.toLowerCase());
-        //If you want to ban players of any other game than LOL, changer where it says league of legends to any other lowercase name of a game
-        if (newMember.member.presence.activities[i].name.toLowerCase() == "genshin impact") { // Started playing.
+        //If you want to ban players of any other game than genshin, change where it says genshin impact to any other lowercase name of a game
+        if (newMember.member.presence.activities[i].name.toLowerCase() == "genshin impact") { // This happens once someone is playing genshin impact
             console.log(`************** ${newMember.user.tag} IS PLAYING GENSHIN IMPACT **************`);
             genshinplayers.push(newMember.user.tag)
             console.log(genshinplayers);
@@ -101,10 +144,8 @@ client.on('presenceUpdate', (oldMember, newMember) => {
         console.log(newMember.user.tag +" has no activities");
     } 
 });
-
-
 client.login(config.token);
 
-// Code by Jakob Danielsen and M-et
 
-
+// +++ Code by Jakob Danielsen and M'et +++
+    
