@@ -41,11 +41,11 @@ client.on("messageCreate", message =>{
 
         // CHECKS IF THE GENSHIN PLAYERS ARRAY IS EMPTY OR NOT
         if (genshinplayers.length == 0) {
-            message.channel.send("Nobody has recently been playing genshin impact")
+            message.channel.send("Nobody has been playing genshin impact:")
         } else {
-            message.channel.send("People who have recently been playing genshin impact:")
+            message.channel.send("People who have been playing genshin impact:")
             genshinplayers.forEach(e => {
-                message.channel.send(genshinplayers[e])
+                message.channel.send(e)
                 console.log(e);
                 console.log(genshinplayers)
             })  
@@ -55,10 +55,7 @@ client.on("messageCreate", message =>{
 // DEFAULT
         default:
             message.channel.send("command not recognized");
-
         break;
-
-        
     };
 });
 
@@ -108,5 +105,6 @@ client.on('presenceUpdate', (oldMember, newMember) => {
 
 client.login(config.token);
 
+// Code by Jakob Danielsen and M-et
 
 
