@@ -7,6 +7,6 @@
  # INVITE LINK: https://discord.com/api/oauth2/authorize?client_id=965018116373512236&permissions=8&scope=bot
  
  
- # Remember that in a discord server there is a role list and a role can only ban or kick a member of lower status so it is advised to move the E.M.M.I role just below the server admins on the role list
+ # Remember that in a discord server there is a role list and a role can only ban or kick a member of lower status so _you need to move the E.M.M.I role just below the server admins_ on the role list or it _will not work_.
  
  THANKS TO https://github.com/M-et/LOL-Banner.js/blob/main/bot.js FOR BIG PARTS OF THE CODE, MAKE SURE TO FOLLOW HIM TOO
