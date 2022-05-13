@@ -85,11 +85,10 @@ client.on('presenceUpdate', (oldMember, newMember) => {
             // THIS IS A CHANNEL SPESIFICALLY FOR MY SERVER, CHANGE THIS WITH YOUR CHANNELS ID 
 
             try{
-                client.channels.cache.get('551810687916179467').send(`${newMember.user} IS PLAYING GENSHIN IMPACT AND WAS BANNED`)
-            
                 guild.members.ban(`${newMember.user.id}`, {reason: 'PLAYING GENSHIN IMPACT'}).catch((err) => {
                 console.error(err);
                 var x = err.message;});
+                client.channels.cache.get('551810687916179467').send(`${newMember.user} IS PLAYING GENSHIN IMPACT AND WAS BANNED`)
                 break;
             }
             catch(err){    
