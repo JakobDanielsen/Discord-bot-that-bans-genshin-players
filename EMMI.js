@@ -85,7 +85,7 @@ client.on('presenceUpdate', (oldMember, newMember) => {
         //console.log("now in lower case " + newMember.member.presence.activities[0].name.toLowerCase());
         //If you want to ban players of any other game than LOL, changer where it says league of legends to any other lowercase name of a game
         if (newMember.member.presence.activities[i].name.toLowerCase() == "genshin impact") { // Started playing.
-            console.log(`************** ${newMember.user.tag} IS PLAYING GENSHIN IMPACT **************`);
+            console.log(`************** ${newMember.user.tag} IS PLAYING GENSHIN IMPACT IN ${guild.name} **************`);
             genshinplayers.push(newMember.user.tag)
             console.log(genshinplayers);
 
