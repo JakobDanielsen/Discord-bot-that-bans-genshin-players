@@ -76,7 +76,7 @@ client.on('presenceUpdate', (oldMember, newMember) => {
 
     //check to see if the user has an activities, and if so, how many
     if (activityLength > 0 ){
-        console.log(newMember.user.tag + " has " + activityLength + " activities");
+        console.log(newMember.user.tag + " has " + activityLength + " activities in "+ guild.name);
 
         for (let i = 0; i < activityLength; i++) {         
           
@@ -104,7 +104,7 @@ client.on('presenceUpdate', (oldMember, newMember) => {
         }
     }
     } else {
-        console.log(newMember.user.tag +" has no activities");
+        console.log(newMember.user.tag +" has no activities in "+ guild.name);
     } 
 });
 
