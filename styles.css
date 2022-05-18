@@ -1,0 +1,14 @@
+@font-face {
+    font-family: igor;
+    src: url(IGOR-BoldItalic.woff);
+}
+.emmibg{
+    background-image:url("/img/EMMI.jpeg");
+    background-position: center center;
+    background-size: cover;
+}
+
+.emmibg h1{
+    font-family: igor;
+    text-shadow: -10px -5px rgb(12, 6, 6) ;
+}
