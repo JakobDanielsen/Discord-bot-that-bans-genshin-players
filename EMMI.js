@@ -54,7 +54,7 @@ client.on("messageCreate", message =>{
 
         case"SERVERS":
         const Guilds = client.guilds.cache.map(guild => guild.name);
-        message.channel.send("E.M.M.I. bot are in these servers: " + JSON.stringify(Guilds));
+        message.channel.send("E.M.M.I. bot is in " + Guilds.length + " servers: " + JSON.stringify(Guilds));
         break;
         case"TEST":
         message.channel.send(`You sent this message in ${message.guild.name}`)
