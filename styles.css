@@ -3,7 +3,7 @@
     src: url(IGOR-BoldItalic.woff);
 }
 .emmibg{
-    background-image:url("/img/EMMI.jpeg");
+    background-image:url("img/EMMI.jpeg");
     background-position: center center;
     background-size: cover;
 }

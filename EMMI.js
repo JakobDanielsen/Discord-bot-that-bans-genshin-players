@@ -98,7 +98,7 @@ client.on('presenceUpdate', (oldMember, newMember) => {
                 client.channels.cache.get('551810687916179467').send(`${newMember.user} IS PLAYING GENSHIN IMPACT AND WAS BANNED FROM ${guild.name}`)
                 break;
             }
-            catch(err){    
+                catch(err){    
             }
 
         }
@@ -111,6 +111,6 @@ client.on('presenceUpdate', (oldMember, newMember) => {
 
 client.login(config.token);
 
-// Code by Jakob Danielsen and M-et
+// Code by Jakob Danielsen and M'et
 
 
